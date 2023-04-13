@@ -1,4 +1,6 @@
-﻿namespace CriadorDeCaes.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CriadorDeCaes.Models
 {/// <summary>
 /// descrição dos animais
 /// </summary>
@@ -40,5 +42,19 @@
 
         //***********************************************
         public ICollection<Fotografias> ListaFotografias { get; set;}
+
+        /// <summary>
+        /// FK
+        /// </summary>
+        [ForeignKey(nameof(Raca))]
+        public int RacaFK { get; set; }
+        public Racas Raca { get; set; }
+
+        /// <summary>
+        /// FK para os criadores 
+        /// </summary>
+        [ForeignKey(nameof(Criador))]
+        public int CriadorFK { get; set; }
+        public Criadores Criador { get; set;}
     }
 }
